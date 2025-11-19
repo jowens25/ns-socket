@@ -36,30 +36,21 @@ void readSocket(int client)
 void writeSerial(int ser)
 {
 
-    if (sock_cb.count < 128)
+    char tx[128];
+    int bytes_read = cb_read_chunk(&sock_cb, tx, 128);
+
+    if (bytes_read == 0)
     {
         return;
     }
 
-    char tx[128];
+    int n = write(ser, tx, bytes_read);
 
-    cb_read_chunk(&ser_cb, tx, 128);
-
-    printf("%s\r\n", tx);
-
-    for (int i = 0; i < MAX_CONNECTIONS; i++)
+    if (n < 0)
     {
-
-        int n = write(clients[i], tx, 128); // Write only what we read
-
-        if (n < 0)
+        if (errno == EPIPE || errno == ECONNRESET || errno == EBADF)
         {
-            if (errno == EPIPE || errno == ECONNRESET || errno == EBADF)
-            {
-
-                close(clients[i]);
-                clients[i] = -1;
-            }
+            printf("Serial write error");
         }
     }
 }
@@ -72,7 +63,7 @@ void writeSockets(int *clients)
 
     if (bytes_read == 0)
     {
-        return; // No complete line available
+        return;
     }
 
     for (int i = 0; i < MAX_CONNECTIONS; i++)

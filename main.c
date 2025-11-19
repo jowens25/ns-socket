@@ -107,6 +107,11 @@ int main()
                 readSocket(clients[i]);
             }
         }
+
+        if (FD_ISSET(ser, &readfds))
+        {
+            writeSerial(ser);
+        }
     }
 
     return 0;
