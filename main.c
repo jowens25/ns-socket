@@ -63,6 +63,9 @@ int main(int argc, char *argv[])
     fd_set readfds;
     fd_set writefds;
 
+    char tx[BUFFER_SIZE];
+    int bytes_read =0;
+
     while (1)
     {
 
@@ -72,40 +75,49 @@ int main(int argc, char *argv[])
         FD_ZERO(&readfds);
         FD_ZERO(&writefds);
 
-        // Always monitor serial for reading
+        // check serial for reading
         FD_SET(ser, &readfds);
         max_fd = MAX(ser, max_fd);
 
-        // Only monitor serial for writing if we have data from sockets to send
-        if (!cb_is_empty(&sock_cb))
-        {
+        // only check serial for writing if we have something to write
+        if (!cb_is_empty(&sock_cb)) {
+
             FD_SET(ser, &writefds);
+
+            max_fd = MAX(ser, max_fd);
+
         }
 
-        // Always monitor socket for new connections
+
+
+        // check socket for new connections
         FD_SET(sock, &readfds);
         max_fd = MAX(sock, max_fd);
 
-        // Monitor client connections
+
         for (int i = 0; i < MAX_CONNECTIONS; i++)
         {
             if (clients[i] != -1)
             {
-                // Always monitor clients for reading
+                //printf("adding clients\r\n");
+                // if a client is valid check for reading
                 FD_SET(clients[i], &readfds);
-
-                // Only monitor clients for writing if we have serial data to send
-                if (!cb_is_empty(&ser_cb))
-                {
-                    FD_SET(clients[i], &writefds);
-                }
-            
                 max_fd = MAX(clients[i], max_fd);
+
+
+                FD_SET(clients[i], &writefds);
+                max_fd = MAX(clients[i], max_fd);
+                
+
+
             }
         }
 
         struct timeval timeout = {0, 100000};
+        //int activity = select(max_fd + 1, &readfds, NULL, NULL, &timeout);
         int activity = select(max_fd + 1, &readfds, &writefds, NULL, &timeout);
+
+        printf("act: %d\r\n", activity);
 
         if (activity < 0)
         {
@@ -115,22 +127,27 @@ int main(int argc, char *argv[])
 
         else if (activity == 0)
         {
-            //perror("timeout\r\n");
+            perror("timeout\r\n");
             continue;
         }
 
         else
         {
 
+            
+
             // serial handlers
             if (FD_ISSET(ser, &readfds))
             {
                 readSerial(ser);
             }
+
             if (FD_ISSET(ser, &writefds))
             {
                 writeSerial(ser);
             }
+
+            
 
             // read sockets
             for (int i = 0; i < MAX_CONNECTIONS; i++)
@@ -140,16 +157,30 @@ int main(int argc, char *argv[])
                 {
                     readSocket(clients[i]);
                 }
-
-                // if clients are valid and set
-                if (clients[i] != -1 && FD_ISSET(clients[i], &writefds))
-                {
-                    readSocket(clients[i]);
-                }
             }
 
-            // write writefds sockets
-            writeSockets(clients, writefds, readfds);
+            // if data available write sockets
+            if (!cb_is_empty(&ser_cb)) {
+
+                bytes_read = cb_read_chunk(&ser_cb, tx, BUFFER_SIZE);
+                
+                if (bytes_read == 0)
+                {
+                    perror("no bytes read?");
+                    continue;
+                }
+            }
+            
+
+            for (int i = 0; i < MAX_CONNECTIONS; i++) {
+
+                if (clients[i] != -1 && FD_ISSET(clients[i], &writefds)) {
+
+                    writeSocket(clients[i], tx, bytes_read);
+                }
+            }
+        
+
 
             // new connection handler
             // if socket is ready, trying to connect, accept a connection
@@ -212,5 +243,16 @@ int main(int argc, char *argv[])
             }
         }
     }
+
+
+    close(ser);
+    close(sock);
+    for (int i = 0; i < MAX_CONNECTIONS; i++)
+    {
+        if (clients[i] != -1)
+            close(clients[i]);
+    }
+
+
     return 0;
 }

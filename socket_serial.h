@@ -42,6 +42,7 @@ void writeSerial(int ser);
 void readSocket(int client);
 // void writeSockets(int *clients, fd_set fds);
 void writeSockets(int *clients, fd_set writefds, fd_set readfds);
+void writeSocket(int client, char *tx, int bytes_read);
 
 void removeClosedClients(void);
 
