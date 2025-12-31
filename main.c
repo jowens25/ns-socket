@@ -28,7 +28,7 @@ int main()
     cb_init(&sock_cb);
 
     // open and setup serial port
-    int ser = open(SERIAL_PORT, O_RDWR | O_NOCTTY | O_SYNC);
+    int ser = open(SERIAL_PORT, O_RDWR | O_NOCTTY);
     if (ser < 0)
     {
         perror("unable to open serial port");
