@@ -32,7 +32,7 @@ int main()
     if (ser < 0)
     {
         perror("unable to open serial port");
-        return -1;
+        return ser;
     }
 
     // open and setup socket
