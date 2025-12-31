@@ -30,9 +30,10 @@ int main()
     // open and setup serial port
     int ser = open(SERIAL_PORT, O_RDWR | O_NOCTTY);
     if (ser < 0)
-    {
+    {   
         perror("unable to open serial port");
-        return ser;
+        
+        return -1;
     }
 
     // open and setup socket
