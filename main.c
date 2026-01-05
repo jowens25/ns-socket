@@ -17,6 +17,7 @@
 struct termios tty;
 int clients[MAX_CONNECTIONS] = {-1, -1, -1, -1};
 int max_fd;
+int debug = false;
 
 char SERIAL_PORT[SERIAL_PORT_LEN] = {0};
 
@@ -28,6 +29,15 @@ int main(int argc, char *argv[])
         printf("Please include a serial port\r\n");
         printf("example: %s /dev/ttymxc2\r\n", argv[0]);
         exit(-1);
+    }
+
+    if (argv[2] != NULL) {
+
+        if ( strncmp(argv[2], "debug", 5) == 0) {
+            debug = true;
+            printf("DEBUGGING\r\n");
+        }
+
     }
 
     strncpy(SERIAL_PORT, argv[1], strlen(argv[1]));
@@ -46,8 +56,8 @@ int main(int argc, char *argv[])
     // open and setup socket
     int err = serialSetup(ser);
     if (err != 0)
-    {
-        printf("serial setup error");
+    {   
+        perror("serial setup error");
     }
     set_nonblocking(ser);
 
@@ -117,7 +127,9 @@ int main(int argc, char *argv[])
         //int activity = select(max_fd + 1, &readfds, NULL, NULL, &timeout);
         int activity = select(max_fd + 1, &readfds, NULL, NULL, &timeout);
 
-        printf("act: %d\r\n", activity);
+        if (debug){
+            printf("act: %d\r\n", activity);
+        }
 
         if (activity < 0)
         {
@@ -126,8 +138,10 @@ int main(int argc, char *argv[])
         }
 
         else if (activity == 0)
-        {
-            perror("timeout\r\n");
+        {   
+            if (debug) {
+                perror("timeout\r\n");
+            }
             continue;
         }
 
