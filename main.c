@@ -76,6 +76,8 @@ int main(int argc, char *argv[])
     char tx[BUFFER_SIZE];
     int bytes_read =0;
 
+    int attempts = 10;
+
     while (1)
     {
 
@@ -131,6 +133,11 @@ int main(int argc, char *argv[])
             printf("act: %d\r\n", activity);
         }
 
+        if (attempts == 0) {
+            perror("serial disconnected\r\n");
+            break;
+            }
+
         if (activity < 0)
         {
             perror("select error\r\n");
@@ -148,13 +155,23 @@ int main(int argc, char *argv[])
         else
         {
 
-            
+
 
             // serial handlers
             if (FD_ISSET(ser, &readfds))
             {
-                readSerial(ser);
+                int read_n = readSerial(ser);
+
+                if (read_n <= 0) {
+                    attempts--;
+                    perror("serial read failed!");
+                    sleep(1);
+                }
+
+
             }
+
+            
 
             if (!cb_is_empty(&sock_cb))
             {

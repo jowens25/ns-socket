@@ -32,15 +32,15 @@
 
 char chunk[CHUNK_SIZE] = {0};
 char socket_chunk[CHUNK_SIZE] = {0};
-
 // read from serial file descriptor into ser buff
-void readSerial(int ser)
+int readSerial(int ser)
 {
     int n = read(ser, chunk, CHUNK_SIZE);
     if (n > 0)
     {
         cb_write_chunk(&ser_cb, chunk, n);
     }
+    return n;
 }
 
 // write to serial file descriptor from sock buff

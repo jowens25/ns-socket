@@ -36,7 +36,7 @@ int serWrite(int ser, char data[], size_t dataLength);
 
 int serialSetup(int);
 
-void readSerial(int ser);
+int readSerial(int ser);
 void writeSerial(int ser);
 
 void readSocket(int client);
