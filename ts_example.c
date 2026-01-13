@@ -11,8 +11,13 @@
 #include <unistd.h>
 
 #include <linux/net_tstamp.h>
+#include <signal.h>
 
 #define MAX_BUF_LEN 1024
+
+
+int server_socket, client_socket, len;
+
 
 void scan_cb_buf(struct msghdr * msg)
 {
@@ -68,6 +73,16 @@ void scan_cb_buf(struct msghdr * msg)
 }
 
 
+void cleanup_and_exit(int signum)
+{
+    printf("\nReceived signal %d, cleaning up...\n", signum);
+    if (server_socket >= 0) {
+        close(server_socket);
+        server_socket = -1;
+    }
+    exit(0);
+}
+
 int main(int argc, char** argv) {
     int port = 55055;
     if( argc > 1 )
@@ -75,12 +90,16 @@ int main(int argc, char** argv) {
         port = atoi(argv[1]);
     }
 
-    int server_socket, client_socket, len;
     struct sockaddr_in server_address, client_address;
     char buffer[MAX_BUF_LEN];
     char control_block_buf[MAX_BUF_LEN];
     struct msghdr msg;
     struct iovec iovec_storage;
+
+        // Set up signal handlers
+    signal(SIGINT, cleanup_and_exit);   // Ctrl+C
+    signal(SIGTERM, cleanup_and_exit);  // kill command
+    signal(SIGHUP, cleanup_and_exit);   // Terminal hangup
 
     iovec_storage.iov_base = buffer;
     iovec_storage.iov_len = MAX_BUF_LEN;
