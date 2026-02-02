@@ -1,5 +1,5 @@
 Package: ns-socket-mux
-Version: 1.0-2
+Version: 1.0-3
 Architecture: amd64
 Maintainer: Jacob Owens <jowens@novuspower.com>
 Installed-Size: 39
