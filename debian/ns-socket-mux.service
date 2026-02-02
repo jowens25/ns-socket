@@ -1,0 +1,14 @@
+[Unit]
+Description=Serial to Socket Mux
+After=network.target
+
+[Service]
+Type=simple
+ExecStart=/usr/bin/ns-socket-mux /dev/ttyUSB0
+Restart=on-failure
+User=root
+RuntimeDirectory=ns
+RuntimeDirectoryMode=0755
+
+[Install]
+WantedBy=multi-user.target

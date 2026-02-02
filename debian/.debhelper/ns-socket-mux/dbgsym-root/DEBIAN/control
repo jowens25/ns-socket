@@ -1,0 +1,13 @@
+Package: ns-socket-mux-dbgsym
+Package-Type: ddeb
+Source: ns-socket-mux
+Version: 1.0-1
+Auto-Built-Package: debug-symbols
+Architecture: amd64
+Maintainer: Jacob Owens <jowens@novuspower.com>
+Installed-Size: 22
+Depends: ns-socket-mux (= 1.0-1)
+Section: debug
+Priority: optional
+Description: debug symbols for ns-socket-mux
+Build-Ids: ea0a26023fb6fc6bf822ffbcbdb3b715768f72ee

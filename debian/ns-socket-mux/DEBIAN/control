@@ -1,0 +1,12 @@
+Package: ns-socket-mux
+Version: 1.0-1
+Architecture: amd64
+Maintainer: Jacob Owens <jowens@novuspower.com>
+Installed-Size: 39
+Depends: libc6 (>= 2.34)
+Section: utils
+Priority: optional
+Description: Serial port to socket bridge service
+ This service creates a bridge between a serial port and multiple
+ serial services, allowing multiple applications to communicate
+ over a single serial connection.

@@ -1,0 +1,3 @@
+bb280393c1d744713641b9fde01a2515  usr/bin/ns-socket-mux
+dfd7792dccda7f6736867dcbf022c1a9  usr/lib/systemd/system/ns-socket-mux.service
+493d3dbf861ebaa44e7d3a25d4ff92bc  usr/share/doc/ns-socket-mux/changelog.Debian.gz

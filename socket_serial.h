@@ -13,18 +13,20 @@
 #include <ctype.h>
 #include <stddef.h>
 
-#define SOCKET_PATH "/tmp/serial.sock"
+#define SOCKET_PATH "/run/ns/ns-socket-mux.sock"
+
 // #define SERIAL_PORT "/dev/ttyUSB0"
 #define MAX_CONNECTIONS 4
 
-#define CHUNK_SIZE 256
+#define CHUNK_SIZE 1024
 #define SERIAL_PORT_LEN 128
 extern struct termios tty;
 // extern struct sockaddr_un addr;
 
 extern int clients[MAX_CONNECTIONS];
 
-extern char chunk[CHUNK_SIZE];
+
+
 // extern int index;
 extern int offset;
 extern int head;
@@ -50,6 +52,6 @@ void addNewConnections(int sock);
 
 int socketSetup(int sock);
 
-//void set_nonblocking(int fd);
+void set_nonblocking(int fd);
 
 #endif // SOCKET_SERIAL_H
