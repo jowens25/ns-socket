@@ -1,4 +1,4 @@
-
+/*
 #include "socket_serial.h"
 #include <sys/socket.h>
 #include <sys/types.h>
@@ -16,7 +16,6 @@
 #include "netinet/in.h"
 #include "sys/time.h" //FD_SET, FD_ISSET, FD_ZERO macros
 
-#include "socket_serial.h"
 #include <sys/socket.h>
 #include <sys/types.h>
 #include <sys/un.h>
@@ -113,3 +112,5 @@ void set_nonblocking(int fd)
     if (flags != -1)
         fcntl(fd, F_SETFL, flags | O_NONBLOCK);
 }
+
+*/

@@ -11,13 +11,16 @@
 #include <errno.h>
 #include <stdbool.h>
 //
+
+#define SOCKET_PATH "/tmp/serial.sock"
+
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
 
 #define SERIAL_PORT_PARM "SERIAL_PORT"
 
 struct termios tty;
-int clients[MAX_CONNECTIONS] = {-1, -1, -1, -1};
-int max_fd;
+//int clients[MAX_CONNECTIONS] = {-1, -1, -1, -1};
+//int max_fd;
 int debug = false;
 	
 #define DEF_BUFSIZE 512 
@@ -224,7 +227,7 @@ void handle_serial(int client, int serial, int listener, fd_set *master, int fdm
 
 
 
-int main(int argc, char *argv[])
+int main(int argc, char *argv[]) 
 {
 
     read_serial_port_from_conf();
@@ -328,3 +331,5 @@ int main(int argc, char *argv[])
 
     return 0;
 }
+
+
