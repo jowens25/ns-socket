@@ -1,17 +1,17 @@
 make
 
 # copy bin
-cp -f ns-socket-mux /usr/bin/ns-socket-mux
+cp -f ns-serial-mux /usr/bin/ns-serial-mux
 
 # copy conf
 
-cp -f ns-socket-mux.conf /etc/ns-socket-mux.conf
+cp -f ns-serial-mux.conf /etc/ns-serial-mux.conf
 
 make clean
 
 # copy service file
-cp -f debian/ns-socket-mux.service /etc/systemd/system/ns-socket-mux.service
+cp -f debian/ns-serial-mux.service /etc/systemd/system/ns-serial-mux.service
 
 sudo systemctl daemon-reload
-systemctl start ns-socket-mux.service
-systemctl status ns-socket-mux.service
+systemctl start ns-serial-mux.service
+systemctl status ns-serial-mux.service

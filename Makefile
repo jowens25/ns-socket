@@ -4,7 +4,7 @@ CFLAGS = -Wall -g
 
 SOURCES = $(wildcard *.c)
 OBJECTS = $(SOURCES:.c=.o)
-TARGET = ns-socket-mux
+TARGET = ns-serial-mux
 
 PREFIX ?= /usr
 DESTDIR ?=
@@ -17,7 +17,7 @@ $(TARGET): $(OBJECTS)
 
 install: $(TARGET)
 	install -D -m 755 $(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
-	install -D -m 644 ns-socket-mux.conf $(DESTDIR)/etc/ns-socket-mux/ns-socket-mux.conf
+	install -D -m 644 ns-serial-mux.conf $(DESTDIR)/etc/ns-serial-mux/ns-serial-mux.conf
 
 .PHONY: clean install
 

@@ -1,14 +1,14 @@
-Source: ns-socket-mux
+Source: ns-serial-mux
 Section: utils
 Priority: optional
 Maintainer: Jacob Owens <jowens@novuspower.com>
 Build-Depends: debhelper-compat (=12), gcc, libc6-dev
 Standards-Version: 4.6.0
 
-Package: ns-socket-mux
+Package: ns-serial-mux
 Architecture: any
 Depends: ${shlibs:Depends}, ${misc:Depends}
-Description: Serial port to socket bridge service
+Description: Serial port to socket bridge
  This service creates a bridge between a serial port and multiple
  serial services, allowing multiple applications to communicate
  over a single serial connection.

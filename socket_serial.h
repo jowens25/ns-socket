@@ -23,7 +23,7 @@ extern struct termios tty;
 // extern struct sockaddr_un addr;
 
 extern int clients[MAX_CONNECTIONS];
-#define SOCKET_PATH "/run/ns/ns-socket-mux.sock"
+#define SOCKET_PATH "/run/ns/ns-serial-mux.sock"
 
 
 
