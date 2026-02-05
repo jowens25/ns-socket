@@ -5,6 +5,7 @@
 #include <sys/un.h>
 #include <errno.h>
 #include <sys/select.h>
+#include <sys/stat.h>
 #include "stdio.h"
 #include "string.h" //strlen
 #include "stdlib.h"
@@ -27,7 +28,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <stdbool.h>
-
+#include <syslog.h>
 
 
 int socketSetup(int sock)
@@ -42,12 +43,21 @@ int socketSetup(int sock)
     if (bind(sock, (struct sockaddr *)&addr, sizeof(addr)) == -1)
     {
         perror("bind failed");
+        syslog(LOG_ERR, "Bind failed: %s", strerror(errno));
+
         exit(1);
     }
     if (listen(sock, MAX_CONNECTIONS) == -1)
     {
         perror("listen failed");
         exit(1);
+    }
+    
+    // Set socket permissions to allow all users to connect
+    if (chmod(SOCKET_PATH, 0666) == -1)
+    {
+        perror("chmod failed");
+        syslog(LOG_ERR, "Chmod failed: %s", strerror(errno));
     }
     set_nonblocking(sock);
     printf("Serving %s on %s\r\n", SERIAL_PORT, SOCKET_PATH);

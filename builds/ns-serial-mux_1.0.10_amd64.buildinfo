@@ -1,20 +1,20 @@
 Format: 1.0
-Source: ns-socket-mux
-Binary: ns-socket-mux ns-socket-mux-dbgsym
+Source: ns-serial-mux
+Binary: ns-serial-mux ns-serial-mux-dbgsym
 Architecture: amd64
-Version: 1.0-3
+Version: 1.0.10
 Checksums-Md5:
- cf861d34dc116b0655512f5f1d7d5457 7336 ns-socket-mux-dbgsym_1.0-3_amd64.ddeb
- e03089280b8b1342e2663818921f18d5 6424 ns-socket-mux_1.0-3_amd64.deb
+ 2c65f2ef527636f59ec49ca0f5c177da 7552 ns-serial-mux-dbgsym_1.0.10_amd64.ddeb
+ e9cdeaae0df765a790ac0d11e2d22fbc 6822 ns-serial-mux_1.0.10_amd64.deb
 Checksums-Sha1:
- 3fbedf378a3bc4cdd301543da1541c97be96ff61 7336 ns-socket-mux-dbgsym_1.0-3_amd64.ddeb
- 2d636675d205c5721aa25fd0479ad8cf612dff52 6424 ns-socket-mux_1.0-3_amd64.deb
+ 20ef1ba8fc675c4cc787d8b7260b1e39d6cc87ee 7552 ns-serial-mux-dbgsym_1.0.10_amd64.ddeb
+ 399bf8de01f3a4cf75a79f7a44a3967184fb5500 6822 ns-serial-mux_1.0.10_amd64.deb
 Checksums-Sha256:
- 96e7246ab2b99a1d82423d4b36fd117360b915dbcadd14941968fe3da7625db4 7336 ns-socket-mux-dbgsym_1.0-3_amd64.ddeb
- 6e5abcb41719b62b9fcd20a9d4a6face8b71955ef8fd08cbf72445f49d0e22c6 6424 ns-socket-mux_1.0-3_amd64.deb
+ f4a679d9e6bfb7f70df37e63572006bdd57e53201e606bfbacdebdbc18d1ba71 7552 ns-serial-mux-dbgsym_1.0.10_amd64.ddeb
+ 1511cd9bd531bf18cfc240e09909448b19247cd8c9c600e871ca49f101e6d38e 6822 ns-serial-mux_1.0.10_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Mon, 02 Feb 2026 14:10:17 -0600
+Build-Date: Thu, 05 Feb 2026 13:19:21 -0600
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -80,10 +80,10 @@ Installed-Build-Depends:
  libbinutils (= 2.42-4ubuntu2.8),
  libblkid1 (= 2.39.3-9ubuntu6.4),
  libbz2-1.0 (= 1.0.8-5.1build0.1),
- libc-bin (= 2.39-0ubuntu8.6),
- libc-dev-bin (= 2.39-0ubuntu8.6),
- libc6 (= 2.39-0ubuntu8.6),
- libc6-dev (= 2.39-0ubuntu8.6),
+ libc-bin (= 2.39-0ubuntu8.7),
+ libc-dev-bin (= 2.39-0ubuntu8.7),
+ libc6 (= 2.39-0ubuntu8.7),
+ libc6-dev (= 2.39-0ubuntu8.7),
  libcap-ng0 (= 0.8.4-2build2),
  libcap2 (= 1:2.66-5ubuntu2.2),
  libcc1-0 (= 14.2.0-4ubuntu2~24.04),
@@ -148,7 +148,7 @@ Installed-Build-Depends:
  libuuid1 (= 2.39.3-9ubuntu6.4),
  libxml2 (= 2.9.14+dfsg-1.3ubuntu3.7),
  libzstd1 (= 1.5.5+dfsg2-2build1.1),
- linux-libc-dev (= 6.8.0-90.91),
+ linux-libc-dev (= 6.8.0-94.96),
  login (= 1:4.13+dfsg1-4ubuntu3.2),
  lto-disabled-list (= 47),
  m4 (= 1.4.19-4build1),
@@ -174,4 +174,4 @@ Environment:
  DEB_BUILD_OPTIONS="parallel=24"
  DEB_BUILD_PROFILES="noudeb"
  LANG="en_US.UTF-8"
- SOURCE_DATE_EPOCH="1770062999"
+ SOURCE_DATE_EPOCH="1770317852"

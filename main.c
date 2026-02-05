@@ -10,7 +10,7 @@
 #include <stdlib.h>
 #include <errno.h>
 #include <stdbool.h>
-//
+#include <syslog.h>
 
 
 #define MAX(X, Y) (((X) > (Y)) ? (X) : (Y))
@@ -34,6 +34,9 @@ void clean_up(void) {
     for(int i = 0; i <= fdmax; i++) { 
             close(i);
     }
+    
+    closelog();
+
 }
 
 
@@ -127,16 +130,12 @@ void read_serial_port_from_conf(void) {
     char *aptr = aline;
     char rval[512], lval[512];
 
-
     if ((fp = fopen(CONFIG_FILE, "rb")) != NULL) {
 
         while((getline(&aptr, &alen, fp)) != -1) {
 
             ltrim(aline);
 			rtrim(aline);
-
-
-
 
             if (aline[0] == '#' || aline[0] == 0)
 			{
@@ -146,7 +145,9 @@ void read_serial_port_from_conf(void) {
 				{
 					if (strcasecmp(lval, SERIAL_PORT_PARM) == 0)
 					{
+                        perror("ser port? ");
 						strcpy(SERIAL_PORT, rval);
+                        perror(SERIAL_PORT);
 			        } 
 				
 				}
@@ -248,7 +249,13 @@ void handle_serial(int client, int serial, int listener, fd_set *master, int fdm
 int main(int argc, char *argv[]) 
 {
 
+    openlog("ns-serial-mux", LOG_PID | LOG_NDELAY, LOG_DAEMON);
+    
+
     read_serial_port_from_conf();
+
+    syslog(LOG_INFO, "Using serial port: %s", SERIAL_PORT);
+
 
     if (argv[2] != NULL) {
 
@@ -269,12 +276,10 @@ int main(int argc, char *argv[])
 
 
 
-    //strncpy(SERIAL_PORT, argv[1], strlen(argv[1]));
-    printf("Using serial port: %s\n", SERIAL_PORT);
     int ser = open(SERIAL_PORT, O_RDWR | O_NOCTTY | O_SYNC);
     if (ser < 0)
     {
-        perror("unable to open serial port");
+        syslog(LOG_ERR, "Unable to open serial port: %s", strerror(errno));
         return -1;
     }
 
@@ -311,7 +316,8 @@ int main(int argc, char *argv[])
 
         read_fds = master; // copy it
 		if (select(fdmax+1, &read_fds, NULL, NULL, &tv) == -1) {
-			perror("select");
+            syslog(LOG_ERR, "Select: %s", strerror(errno));
+            clean_up();
 			exit(4);
 		}
 
@@ -339,7 +345,8 @@ int main(int argc, char *argv[])
 
 
     clean_up();
-
+    
+    syslog(LOG_ERR, "END: %s", strerror(errno));
 
     return 0;
 }

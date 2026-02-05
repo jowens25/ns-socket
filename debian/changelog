@@ -1,11 +1,13 @@
-ns-serial-mux (1.0.4) UNRELEASED; urgency=medium
+ns-serial-mux (1.0.10) UNRELEASED; urgency=medium
 
-  * 
+  * added logging
   * changed name
-  * 
-  * 
+  * working to fix up serial port and socket addresses
+  * rev up
+  * fixed service file paths and binary names
+  * updated RuntimeDirectoryMode to 0777 for user access to socket
 
- -- jowens <jowens@jowens>  Mon, 02 Feb 2026 15:59:56 -0600
+ -- jowens <jowens@jowens>  Thu, 05 Feb 2026 12:57:32 -0600
 
 ns-socket-mux (1.0-1) noble; urgency=medium
 

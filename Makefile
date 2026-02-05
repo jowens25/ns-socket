@@ -17,7 +17,7 @@ $(TARGET): $(OBJECTS)
 
 install: $(TARGET)
 	install -D -m 755 $(TARGET) $(DESTDIR)$(PREFIX)/bin/$(TARGET)
-	install -D -m 644 ns-serial-mux.conf $(DESTDIR)/etc/ns-serial-mux/ns-serial-mux.conf
+	install -D -m 644 ns-serial-mux.conf $(DESTDIR)/etc/ns/ns-serial-mux.conf
 
 .PHONY: clean install
 
