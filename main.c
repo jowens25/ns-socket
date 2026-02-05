@@ -145,9 +145,23 @@ void read_serial_port_from_conf(void) {
 				{
 					if (strcasecmp(lval, SERIAL_PORT_PARM) == 0)
 					{
-                        perror("ser port? ");
-						strcpy(SERIAL_PORT, rval);
-                        perror(SERIAL_PORT);
+
+                        int ser = open(rval, O_RDWR | O_NOCTTY | O_SYNC);
+
+                        if (ser < 0)
+                        {
+                            syslog(LOG_ERR, "Unable to open serial port: %s trying other lines... ", strerror(errno));
+                            perror(SERIAL_PORT);
+
+                        } else {
+                            syslog(LOG_INFO, "%s", rval);
+
+						    strcpy(SERIAL_PORT, rval);
+                            break;
+
+                        }
+
+
 			        } 
 				
 				}
