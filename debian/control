@@ -6,7 +6,7 @@ Build-Depends: debhelper-compat (=12), gcc, libc6-dev
 Standards-Version: 4.6.0
 
 Package: ns-serial-mux
-Architecture: any
+Architecture: amd64 arm64
 Depends: ${shlibs:Depends}, ${misc:Depends}
 Description: Serial port to socket bridge
  This service creates a bridge between a serial port and multiple
