@@ -27,13 +27,13 @@ Changes:
    * updated conf stuff
 Checksums-Sha1:
  43ee4e67ea54d83223f817965c9bd9563f437af5 7606 ns-serial-mux-dbgsym_1.0.12_amd64.ddeb
- a578ffbf5cc146763dfe5fa11bdb166fa10fa790 6182 ns-serial-mux_1.0.12_amd64.buildinfo
+ fa07194a9896c8e89389d0eff9663d2c2f1ac308 6184 ns-serial-mux_1.0.12_amd64.buildinfo
  d67d4bbbb67e60d8eb9f072c87894a03bb7caea8 6934 ns-serial-mux_1.0.12_amd64.deb
 Checksums-Sha256:
  6024e5247b09b6f55923d2a50bd9de5e54420b9e19592d0f634fd30f0d0f7c4b 7606 ns-serial-mux-dbgsym_1.0.12_amd64.ddeb
- 005e6ca28988f8b0a457753a49ade103f576b539d21f36054dff76e50bcca95f 6182 ns-serial-mux_1.0.12_amd64.buildinfo
+ 82c4926622738905395059e6c60a5141d06e18c5173bd834dc64a1d07f2dea74 6184 ns-serial-mux_1.0.12_amd64.buildinfo
  67afc0fb31b7b9fb980e6607b42f052a1e7b0b871561a9f9539a3ce1b87dff64 6934 ns-serial-mux_1.0.12_amd64.deb
 Files:
  94bf226938f8caf2f2cebd53b7f162f9 7606 debug optional ns-serial-mux-dbgsym_1.0.12_amd64.ddeb
- 700e340d0696cf97ec50798ca0ad4506 6182 utils optional ns-serial-mux_1.0.12_amd64.buildinfo
+ c8196907229c9962c177814128795e04 6184 utils optional ns-serial-mux_1.0.12_amd64.buildinfo
  338184ee8012e352915a1091ce367e71 6934 utils optional ns-serial-mux_1.0.12_amd64.deb

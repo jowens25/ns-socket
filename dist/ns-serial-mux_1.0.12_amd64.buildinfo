@@ -14,7 +14,7 @@ Checksums-Sha256:
  67afc0fb31b7b9fb980e6607b42f052a1e7b0b871561a9f9539a3ce1b87dff64 6934 ns-serial-mux_1.0.12_amd64.deb
 Build-Origin: Ubuntu
 Build-Architecture: amd64
-Build-Date: Thu, 05 Feb 2026 13:46:03 -0600
+Build-Date: Mon, 09 Feb 2026 16:19:44 -0600
 Build-Tainted-By:
  merged-usr-via-aliased-dirs
  usr-local-has-programs
@@ -148,7 +148,7 @@ Installed-Build-Depends:
  libuuid1 (= 2.39.3-9ubuntu6.4),
  libxml2 (= 2.9.14+dfsg-1.3ubuntu3.7),
  libzstd1 (= 1.5.5+dfsg2-2build1.1),
- linux-libc-dev (= 6.8.0-94.96),
+ linux-libc-dev (= 6.8.0-100.100),
  login (= 1:4.13+dfsg1-4ubuntu3.2),
  lto-disabled-list (= 47),
  m4 (= 1.4.19-4build1),
