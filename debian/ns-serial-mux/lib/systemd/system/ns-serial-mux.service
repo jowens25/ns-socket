@@ -10,8 +10,8 @@ RestartSec=5s          # Wait 5 seconds before restarting
 StartLimitIntervalSec=30 # Limit restarts within this window (e.g., 30s)
 StartLimitBurst=2      # Allow 2 restarts within that window before stopping
 User=root
-RuntimeDirectory=ns
-RuntimeDirectoryMode=0777
+StateDirectory=ns # /var/lib/ns
+StateDirectoryMode=0777
 
 [Install]
 WantedBy=multi-user.target
