@@ -1,0 +1,39 @@
+Format: 1.8
+Date: Tue, 10 Feb 2026 13:49:45 -0600
+Source: ns-serial-mux
+Binary: ns-serial-mux ns-serial-mux-dbgsym
+Architecture: arm64
+Version: 1.0.13
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Jacob Owens <jowens@novuspower.com>
+Changed-By: jowens <jowens@jowens>
+Description:
+ ns-serial-mux - Serial port to socket bridge
+Changes:
+ ns-serial-mux (1.0.13) UNRELEASED; urgency=medium
+ .
+   [ Jacob Owens ]
+   * added logging
+   * changed name
+   * working to fix up serial port and socket addresses
+   * rev up
+   * fixed service file paths and binary names
+   * updated RuntimeDirectoryMode to 0777 for user access to socket
+   * added chmod(0666) to socket creation for user permissions
+ .
+   [ jowens ]
+   * updated conf stuff
+   * updated conf again
+Checksums-Sha1:
+ 247f82aedf66eb08dc9c82aaa8f74d37d0e1504b 6612 ns-serial-mux-dbgsym_1.0.13_arm64.deb
+ da92049a506a49ecee4797ec9ba9257fc257414f 5218 ns-serial-mux_1.0.13_arm64.buildinfo
+ 7ca2fd8e324d73b71339e99a2cd70ca6363ee481 6564 ns-serial-mux_1.0.13_arm64.deb
+Checksums-Sha256:
+ 4375ce713e57545930aac08063bfc1b4d732bea7501766bbe9ec92d8362ce534 6612 ns-serial-mux-dbgsym_1.0.13_arm64.deb
+ 255344de8bba930b73984259885ce987421cae010e75ce5f382e5f3aa5a58db7 5218 ns-serial-mux_1.0.13_arm64.buildinfo
+ 961f10c82dbaca2bc16e1940af1e232da3df1d4ae625eab0a7723b59ec8c7bd4 6564 ns-serial-mux_1.0.13_arm64.deb
+Files:
+ 53d34c09e70c3b3ff226c13fdea39aa7 6612 debug optional ns-serial-mux-dbgsym_1.0.13_arm64.deb
+ ef7d71e6e2fc1ef7eff1118e0dd6aaa5 5218 utils optional ns-serial-mux_1.0.13_arm64.buildinfo
+ 97aba6b28310aaf2fb6d5192526122cc 6564 utils optional ns-serial-mux_1.0.13_arm64.deb
