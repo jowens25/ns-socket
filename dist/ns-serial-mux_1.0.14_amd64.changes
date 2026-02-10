@@ -1,0 +1,41 @@
+Format: 1.8
+Date: Tue, 10 Feb 2026 14:24:52 -0600
+Source: ns-serial-mux
+Binary: ns-serial-mux
+Built-For-Profiles: noudeb
+Architecture: amd64
+Version: 1.0.14
+Distribution: UNRELEASED
+Urgency: medium
+Maintainer: Jacob Owens <jowens@novuspower.com>
+Changed-By: jowens <jowens@jowens>
+Description:
+ ns-serial-mux - Serial port to socket bridge
+Changes:
+ ns-serial-mux (1.0.14) UNRELEASED; urgency=medium
+ .
+   [ Jacob Owens ]
+   * added logging
+   * changed name
+   * working to fix up serial port and socket addresses
+   * rev up
+   * fixed service file paths and binary names
+   * updated RuntimeDirectoryMode to 0777 for user access to socket
+   * added chmod(0666) to socket creation for user permissions
+ .
+   [ jowens ]
+   * updated conf stuff
+   * updated conf again
+   * updated paths run -> state
+Checksums-Sha1:
+ 4589ff7debc16d1f331ef6be554ce35e410794cc 7608 ns-serial-mux-dbgsym_1.0.14_amd64.ddeb
+ b77a9a827e5f24c0acc1c7ea23ab0163952c0e85 6184 ns-serial-mux_1.0.14_amd64.buildinfo
+ 3c522d71f5c6bcced265caf831c58aff92e2c5ee 7156 ns-serial-mux_1.0.14_amd64.deb
+Checksums-Sha256:
+ fffb7817f57053ebc5c20528b483ce47678ed023adfb706bc8cd7d40d68be750 7608 ns-serial-mux-dbgsym_1.0.14_amd64.ddeb
+ 8f26fc2f35a804d55c1d6d0ed552d8a8f96faa52804ac112a7f7212df6e3efe8 6184 ns-serial-mux_1.0.14_amd64.buildinfo
+ 4c08feb69823026f2f0a8a7bfb38f836fcd4cd7a0ed0dba7d02736dd97c0f0cf 7156 ns-serial-mux_1.0.14_amd64.deb
+Files:
+ 59688ea9cda666490a2903ba6134b875 7608 debug optional ns-serial-mux-dbgsym_1.0.14_amd64.ddeb
+ a03a58538b68b0ab8d0056586f7def4f 6184 utils optional ns-serial-mux_1.0.14_amd64.buildinfo
+ 2592a81eb0e20b897efd6f4e84acc1f5 7156 utils optional ns-serial-mux_1.0.14_amd64.deb
