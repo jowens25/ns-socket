@@ -1,1 +1,1 @@
-socat - UNIX-CONNECT:/run/ns/ns-serial-mux.sock
+socat - UNIX-CONNECT:/var/lib/ns/ns-serial-mux.sock

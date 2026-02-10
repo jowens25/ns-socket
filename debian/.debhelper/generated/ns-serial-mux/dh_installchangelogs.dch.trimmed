@@ -1,4 +1,4 @@
-ns-serial-mux (1.0.12) UNRELEASED; urgency=medium
+ns-serial-mux (1.0.13) UNRELEASED; urgency=medium
 
   [ Jacob Owens ]
   * added logging
@@ -11,8 +11,9 @@ ns-serial-mux (1.0.12) UNRELEASED; urgency=medium
 
   [ jowens ]
   * updated conf stuff
+  * updated conf again
 
- -- jowens <jowens@jowens>  Thu, 05 Feb 2026 13:45:50 -0600
+ -- jowens <jowens@jowens>  Tue, 10 Feb 2026 13:49:45 -0600
 
 ns-socket-mux (1.0-1) noble; urgency=medium
 

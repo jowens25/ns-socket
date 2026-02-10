@@ -1,5 +1,5 @@
 Package: ns-serial-mux
-Version: 1.0.12
+Version: 1.0.13
 Architecture: amd64
 Maintainer: Jacob Owens <jowens@novuspower.com>
 Installed-Size: 39
